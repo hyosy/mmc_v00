@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { marseilleImage, algerImage, alicanteImage, handleImageError } from '../assets/images/index';
+import { handleImageError } from '../assets/images/index';
 
 const Destinations = ({ onNavigate }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -7,41 +7,44 @@ const Destinations = ({ onNavigate }) => {
   useEffect(() => {
     setIsVisible(true);
   }, []);
+  
+  // Utilisation d'images de villes portuaires plus représentatives
   const destinations = [
     {
       city: 'Marseille',
-      image: marseilleImage,
+      id: 'marseille',
+      image: 'https://images.unsplash.com/photo-1589708532758-ddd0753b3b9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1169&q=80',
       description: 'Découvrez le charme du Vieux Port, la Basilique Notre-Dame de la Garde et profitez de la gastronomie méditerranéenne.'
     },
     {
       city: 'Alger',
-      image: algerImage,
+      id: 'alger',
+      image: 'https://images.unsplash.com/photo-1601288496920-b6154fe3626a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1169&q=80',
       description: 'Explorez la Casbah, la Grande Mosquée et promenez-vous sur le front de mer de la capitale algérienne.'
     },
     {
       city: 'Alicante',
-      image: alicanteImage,
+      id: 'alicante',
+      image: 'https://images.unsplash.com/photo-1533658280853-e4a10c25a30d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1169&q=80',
       description: 'Profitez des plages ensoleillées, du Château de Santa Barbara et de la délicieuse cuisine espagnole.'
     }
   ];
 
-  // Simplified version without animations
-
   return (
-    <div className={`pt-24 pb-16 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+    <div className="py-20 bg-gray-100 min-h-screen" id="destinations-page">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="text-center mb-16 animate-fadeInUp">
           <h1 className="text-3xl font-bold text-gray-900 mb-4 animate-fadeInUp">Nos Destinations</h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto animate-fadeInUp animation-delay-200">
-            MMC Maritime vous propose des traversées régulières entre ces magnifiques ports méditerranéens. 
-            Réservez dès maintenant pour votre prochaine aventure maritime !
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto animate-fadeInUp">
+            Découvrez toutes les destinations desservies par MMC, reliant les plus beaux ports de la Méditerranée avec des traversées confortables et fiables.
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-staggered-fade-in">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fadeInUp">
           {destinations.map((destination, index) => (
             <div 
-              key={index} 
+              key={index}
+              id={destination.id}
               className="bg-white rounded-xl shadow-lg overflow-hidden h-full group transition-all duration-300 hover:shadow-xl"
               style={{ transform: 'translateZ(0)' }} // Force GPU acceleration
             >

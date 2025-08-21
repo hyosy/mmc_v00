@@ -57,6 +57,18 @@
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
+
+  .animate-wave {
+    animation: wave 7s ease-in-out infinite alternate;
+  }
+
+  .animate-spin-slow {
+    animation: spin 15s linear infinite;
+  }
+
+  .animate-bounce-subtle {
+    animation: bounceSoft 2s ease-in-out infinite;
+  }
   
   .animate-staggered-fade-in > * {
     animation: fadeIn 0.5s ease-out forwards;
@@ -68,6 +80,7 @@
   .animate-staggered-fade-in > *:nth-child(3) { animation-delay: 200ms; }
   .animate-staggered-fade-in > *:nth-child(4) { animation-delay: 300ms; }
   .animate-staggered-fade-in > *:nth-child(5) { animation-delay: 400ms; }
+  .animate-staggered-fade-in > *:nth-child(6) { animation-delay: 500ms; }
   
   .animation-delay-200 {
     animation-delay: 200ms;
@@ -80,7 +93,84 @@
   .animation-delay-600 {
     animation-delay: 600ms;
   }
+
+  .animation-delay-800 {
+    animation-delay: 800ms;
+  }
+  
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  }
+  
+  /* Classes utilitaires pour les couleurs de fond spécifiques aux fonctionnalités */
+  .bg-feature-blue-100 {
+    background-color: rgba(219, 234, 254, 1); /* blue-100 */
+  }
+  
+  .text-feature-blue-600 {
+    color: rgba(37, 99, 235, 1); /* blue-600 */
+  }
+  
+  .bg-feature-green-100 {
+    background-color: rgba(220, 252, 231, 1); /* green-100 */
+  }
+  
+  .text-feature-green-600 {
+    color: rgba(22, 163, 74, 1); /* green-600 */
+  }
+  
+  .bg-feature-orange-100 {
+    background-color: rgba(255, 237, 213, 1); /* orange-100 */
+  }
+  
+  .text-feature-orange-600 {
+    color: rgba(234, 88, 12, 1); /* orange-600 */
+  }
+  
+  .bg-feature-purple-100 {
+    background-color: rgba(243, 232, 255, 1); /* purple-100 */
+  }
+  
+  .text-feature-purple-600 {
+    color: rgba(147, 51, 234, 1); /* purple-600 */
+  }
+  
+  /* Classes pour les éléments animés */
+  .animated-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+  
+  .animated-element.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+  .hover-scale {
+    transition: transform 0.3s ease;
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+  
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  .glass-effect-dark {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
 
 @keyframes fadeIn {
   from {
@@ -146,4 +236,88 @@
   100% {
     transform: translateY(0px);
   }
+}
+
+@keyframes wave {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+}
+
+@keyframes bounceSoft {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-progress {
+  animation: progress 2s ease-in-out infinite;
+}
+
+.animate-reverse {
+  animation-direction: reverse;
+}
+
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+.animation-delay-700 {
+  animation-delay: 700ms;
+}
+
+@keyframes staggeredFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.staggered-item {
+  opacity: 0;
+  animation: staggeredFadeIn 0.5s ease-out forwards;
+}
+
+.staggered-item:nth-child(1) { animation-delay: 0.1s; }
+.staggered-item:nth-child(2) { animation-delay: 0.2s; }
+.staggered-item:nth-child(3) { animation-delay: 0.3s; }
+.staggered-item:nth-child(4) { animation-delay: 0.4s; }
+.staggered-item:nth-child(5) { animation-delay: 0.5s; }
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
 }

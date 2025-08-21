@@ -83,28 +83,28 @@ const ReservationCard = ({ horizontal = false, onNavigate }) => {
     
     // Appeler la fonction de navigation fournie par le parent
     if (onNavigate) {
+      console.log("ReservationCard - Envoi des paramètres:", searchParams);
       onNavigate(searchParams);
     }
   };
   
-  // Classe commune pour tous les champs du formulaire
   // Classe commune pour tous les champs du formulaire avec gestion des erreurs
   const getInputClass = (fieldName) => {
-    const baseClass = "w-full px-4 py-2 border rounded-md transition-all duration-200 hover:border-blue-400 focus:outline-none focus:ring-2";
+    const baseClass = "w-full px-3 sm:px-4 py-2 sm:py-2.5 border rounded-lg transition-all duration-200 hover:border-blue-400 focus:outline-none focus:ring-2";
     const errorClass = formErrors[fieldName] ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-blue-600";
     return `${baseClass} ${errorClass}`;
   };
 
   return (
     <div 
-      className={`bg-white rounded-xl shadow-xl overflow-hidden backdrop-blur-sm ${horizontal ? 'md:max-w-4xl mx-auto' : 'max-w-md mx-auto'} transition-all duration-500 transform ${isLoaded ? 'opacity-100 -translate-y-6' : 'opacity-0 translate-y-10'}`}
+      className={`bg-white rounded-xl shadow-xl overflow-hidden backdrop-blur-sm ${horizontal ? 'md:max-w-4xl mx-auto' : 'max-w-md mx-auto'} transition-all duration-500 transform ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
     >
-      <div className="p-6 pt-5 pb-7 border-t-4 border-blue-600">
-        <div className="flex justify-center space-x-4 mb-6">
-          <div className="inline-flex rounded-full shadow-md p-1 bg-gray-100" role="group">
+      <div className="p-3 sm:p-4 md:p-5 border-t-4 border-blue-600">
+        <div className="flex justify-center space-x-2 sm:space-x-4 mb-3 sm:mb-4">
+          <div className="inline-flex rounded-full shadow-md p-0.5 bg-gray-100" role="group">
             <button
               type="button"
-              className={`px-6 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
+              className={`px-3 sm:px-5 py-1 sm:py-1.5 text-xs sm:text-sm font-medium rounded-full transition-all duration-300 ${
                 tripType === 'oneWay' 
                 ? 'bg-blue-600 text-white shadow-md' 
                 : 'bg-transparent text-gray-700 hover:bg-gray-200'
@@ -115,7 +115,7 @@ const ReservationCard = ({ horizontal = false, onNavigate }) => {
             </button>
             <button
               type="button"
-              className={`px-6 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
+              className={`px-3 sm:px-5 py-1 sm:py-1.5 text-xs sm:text-sm font-medium rounded-full transition-all duration-300 ${
                 tripType === 'roundTrip' 
                 ? 'bg-blue-600 text-white shadow-md' 
                 : 'bg-transparent text-gray-700 hover:bg-gray-200'
@@ -127,11 +127,11 @@ const ReservationCard = ({ horizontal = false, onNavigate }) => {
           </div>
         </div>
         
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Premier groupe de champs (dans une grille si horizontal) */}
-          <div className={horizontal ? 'grid grid-cols-12 gap-4' : ''}>
-            <div className={horizontal ? 'col-span-3' : 'mb-4'}>
-              <label className="block text-gray-800 font-medium mb-1">Départ</label>
+        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+          {/* Premier groupe de champs (grille responsive) */}
+          <div className={`grid ${horizontal ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-2 sm:gap-3 md:gap-4' : 'grid-cols-1 gap-3'}`}>
+            <div className={`${horizontal ? 'md:col-span-3' : ''} mb-1 sm:mb-2`}>
+              <label className="block text-gray-700 text-xs sm:text-sm font-medium mb-1 sm:mb-1.5">Départ</label>
               <select 
                 value={departure}
                 onChange={(e) => {
@@ -142,7 +142,7 @@ const ReservationCard = ({ horizontal = false, onNavigate }) => {
                     setFormErrors(newErrors);
                   }
                 }}
-                className={getInputClass('departure')}
+                className={`${getInputClass('departure')} h-9 sm:h-10 text-xs sm:text-sm`}
                 required
               >
                 <option value="">Sélectionnez</option>
@@ -155,8 +155,8 @@ const ReservationCard = ({ horizontal = false, onNavigate }) => {
               )}
             </div>
             
-            <div className={horizontal ? 'col-span-3' : 'mb-4'}>
-              <label className="block text-gray-800 font-medium mb-1">Destination</label>
+            <div className={`${horizontal ? 'md:col-span-3' : ''} mb-1 sm:mb-2`}>
+              <label className="block text-gray-700 text-xs sm:text-sm font-medium mb-1 sm:mb-1.5">Destination</label>
               <select 
                 value={destination}
                 onChange={(e) => {
@@ -167,7 +167,7 @@ const ReservationCard = ({ horizontal = false, onNavigate }) => {
                     setFormErrors(newErrors);
                   }
                 }}
-                className={getInputClass('destination')}
+                className={`${getInputClass('destination')} h-9 sm:h-10 text-xs sm:text-sm`}
                 required
               >
                 <option value="">Sélectionnez</option>
@@ -180,8 +180,8 @@ const ReservationCard = ({ horizontal = false, onNavigate }) => {
               )}
             </div>
             
-            <div className={horizontal ? 'col-span-2' : 'mb-4'}>
-              <label className="block text-gray-800 font-medium mb-1">Date départ</label>
+            <div className={`${horizontal ? 'md:col-span-2' : ''} mb-1 sm:mb-2`}>
+              <label className="block text-gray-700 text-xs sm:text-sm font-medium mb-1 sm:mb-1.5">Date départ</label>
               <input 
                 type="date"
                 value={date}
@@ -194,7 +194,7 @@ const ReservationCard = ({ horizontal = false, onNavigate }) => {
                   }
                 }}
                 min={new Date().toISOString().split('T')[0]}
-                className={getInputClass('date')}
+                className={`${getInputClass('date')} h-9 sm:h-10 text-xs sm:text-sm`}
                 required
               />
               {formErrors.date && (
@@ -202,8 +202,8 @@ const ReservationCard = ({ horizontal = false, onNavigate }) => {
               )}
             </div>
             
-            <div className={horizontal ? 'col-span-2' : 'mb-4'}>
-              <label className="block text-gray-800 font-medium mb-1">Date retour</label>
+            <div className={`${horizontal ? 'md:col-span-2' : ''} mb-1 sm:mb-2`}>
+              <label className="block text-gray-700 text-xs sm:text-sm font-medium mb-1 sm:mb-1.5">Date retour</label>
               <div className="relative">
                 <input 
                   type="date"
@@ -217,7 +217,7 @@ const ReservationCard = ({ horizontal = false, onNavigate }) => {
                     }
                   }}
                   min={date || new Date().toISOString().split('T')[0]}
-                  className={`${getInputClass('returnDate')} ${tripType !== 'roundTrip' ? 'bg-gray-100 cursor-not-allowed' : ''}`}
+                  className={`${getInputClass('returnDate')} ${tripType !== 'roundTrip' ? 'bg-gray-100 cursor-not-allowed' : ''} h-9 sm:h-10 text-xs sm:text-sm`}
                   required={tripType === 'roundTrip'}
                   disabled={tripType !== 'roundTrip' || !date}
                   onMouseEnter={() => tripType !== 'roundTrip' && setHoveredReturnDate(true)}
@@ -234,8 +234,8 @@ const ReservationCard = ({ horizontal = false, onNavigate }) => {
               </div>
             </div>
             
-            <div className={horizontal ? 'col-span-2' : 'mb-4'}>
-              <label className="block text-gray-800 font-medium mb-1">Passagers</label>
+            <div className={`${horizontal ? 'md:col-span-2' : ''} mb-1 sm:mb-2`}>
+              <label className="block text-gray-700 text-xs sm:text-sm font-medium mb-1 sm:mb-1.5">Passagers</label>
               <input 
                 type="number" 
                 min="1" 
@@ -250,7 +250,7 @@ const ReservationCard = ({ horizontal = false, onNavigate }) => {
                     setFormErrors(newErrors);
                   }
                 }}
-                className={getInputClass('passengers')}
+                className={`${getInputClass('passengers')} h-9 sm:h-10 text-xs sm:text-sm`}
                 required
               />
               {formErrors.passengers && (
@@ -259,12 +259,11 @@ const ReservationCard = ({ horizontal = false, onNavigate }) => {
             </div>
           </div>
           
-          {/* Bouton rechercher en dessous */}
-          <div className={horizontal ? 'mt-4 flex justify-center' : 'mt-6'}>
+          {/* Bouton rechercher en dessous - style amélioré et taille réduite */}
+          <div className={`${horizontal ? 'mt-3 sm:mt-5 flex justify-center' : 'mt-3 sm:mt-5'}`}>
             <button
               type="submit"
-              className={`bg-orange-500 text-white font-bold py-2 px-4 rounded-md hover:bg-orange-600 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 relative group overflow-hidden ${horizontal ? 'w-1/3' : 'w-full'}`}
-              style={{ height: '42px' }}
+              className={`bg-gradient-to-r from-orange-500 to-orange-400 text-white font-medium py-2 sm:py-2.5 px-4 sm:px-6 rounded-lg hover:from-orange-600 hover:to-orange-500 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 relative group overflow-hidden border border-orange-300 ${horizontal ? 'w-full sm:w-2/3 md:w-2/5 lg:w-1/4' : 'w-full'}`}
               onClick={(e) => {
                 if (debug) {
                   e.preventDefault();
@@ -272,7 +271,12 @@ const ReservationCard = ({ horizontal = false, onNavigate }) => {
                 }
               }}
             >
-              <span className="relative z-10">Rechercher</span>
+              <span className="relative z-10 text-xs sm:text-sm font-semibold tracking-wide flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                Rechercher
+              </span>
               <span className="absolute inset-0 bg-gradient-to-r from-orange-600 to-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
             </button>
             {debug && (

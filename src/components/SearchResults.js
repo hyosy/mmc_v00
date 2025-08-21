@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { shipExterior } from '../assets/images/index';
 
 const SearchResults = ({ searchParams, onReset, onBook }) => {
@@ -6,6 +6,10 @@ const SearchResults = ({ searchParams, onReset, onBook }) => {
   const [selectedCabinType, setSelectedCabinType] = useState('standard');
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [isBookingStep, setIsBookingStep] = useState(false);
+  
+  useEffect(() => {
+    console.log("SearchResults - Paramètres reçus:", searchParams);
+  }, [searchParams]);
 
   // Simuler des traversées en fonction des paramètres de recherche
   const generateTrips = () => {
@@ -132,9 +136,9 @@ const SearchResults = ({ searchParams, onReset, onBook }) => {
   };
 
   return (
-    <div className="transition-all duration-500 ease-in-out">
+    <div className="transition-all duration-500 ease-in-out opacity-100">
       {!isBookingStep ? (
-        <div className="space-y-8 animate-fadeIn">
+        <div className="space-y-8 opacity-100">
           <div className="bg-white rounded-xl shadow-lg p-6 border-l-4 border-blue-600">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">Résultats de votre recherche</h2>
             <div className="flex flex-wrap gap-4 text-gray-600 mb-6">
