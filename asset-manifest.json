@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/mmc_v00/static/css/main.4db6aa39.css",
-    "main.js": "/mmc_v00/static/js/main.022f7f4d.js",
+    "main.css": "/mmc_v00/static/css/main.23e0264d.css",
+    "main.js": "/mmc_v00/static/js/main.3b354a9f.js",
     "static/media/belle-plage-tropicale-avec-rochers.jpg": "/mmc_v00/static/media/belle-plage-tropicale-avec-rochers.0db846137c97ea2021dc.jpg",
     "static/media/reservation1.jpg": "/mmc_v00/static/media/reservation1.db4940bdfe2b6601e37d.jpg",
     "static/media/seatran-ferry-transportant-des-passagers-de-l-embarcadere-de-donsak-surat.jpg": "/mmc_v00/static/media/seatran-ferry-transportant-des-passagers-de-l-embarcadere-de-donsak-surat.73b9c3d7ac85632ce0ed.jpg",
@@ -9,11 +9,11 @@
     "static/media/alger.jpg": "/mmc_v00/static/media/alger.a61afc5a25fcb1c56b37.jpg",
     "static/media/alicante.jpg": "/mmc_v00/static/media/alicante.d006652beea0f687176e.jpg",
     "index.html": "/mmc_v00/index.html",
-    "main.4db6aa39.css.map": "/mmc_v00/static/css/main.4db6aa39.css.map",
-    "main.022f7f4d.js.map": "/mmc_v00/static/js/main.022f7f4d.js.map"
+    "main.23e0264d.css.map": "/mmc_v00/static/css/main.23e0264d.css.map",
+    "main.3b354a9f.js.map": "/mmc_v00/static/js/main.3b354a9f.js.map"
   },
   "entrypoints": [
-    "static/css/main.4db6aa39.css",
-    "static/js/main.022f7f4d.js"
+    "static/css/main.23e0264d.css",
+    "static/js/main.3b354a9f.js"
   ]
 }
